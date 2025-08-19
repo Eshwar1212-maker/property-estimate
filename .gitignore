@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual env
+venv/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.mo
+*.db
+
+# Pytest
+.pytest_cache/
+
+# Docker
+postgres_data/
+*.pid
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Node / React (for later client folder)
+node_modules/
+dist/

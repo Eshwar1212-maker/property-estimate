@@ -13,10 +13,12 @@ services:
       - "5432:5432"
 
   web:
-    build: .
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./server:/code
     ports:
       - "8000:8000"
     depends_on:
