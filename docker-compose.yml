@@ -14,7 +14,8 @@ services:
 
   web:
     build:
-      context: ./server
+      context: ./serverdocker-compose up
+
       dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
