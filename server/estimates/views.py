@@ -1,30 +1,24 @@
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-import json
 from .models import PropertyInquiry, PropertyEstimate
 
-@method_decorator(csrf_exempt, name="dispatch")
 class PropertyEstimateView(View):
-    async def post(self, request):
+    def post(self, request):
         try:
-            data = json.loads(request.body)
-
-            # Extract inputs
-            address = data.get("address")
-            lot_size_acres = data.get("lot_size_acres")
-            user_context = data.get("user_context", "")
+            # Extract from form POST
+            address = request.POST.get("address")
+            lot_size_acres = request.POST.get("lot_size_acres")
+            user_context = request.POST.get("user_context", "")
 
             # Save inquiry
-            inquiry = await PropertyInquiry.objects.acreate(
+            inquiry = PropertyInquiry.objects.create(
                 address=address,
                 lot_size_acres=lot_size_acres,
                 user_context=user_context
             )
 
-            # For now, fake an AI response by echoing back values
-            estimate = await PropertyEstimate.objects.acreate(
+            # Fake estimate for now
+            PropertyEstimate.objects.create(
                 inquiry=inquiry,
                 project_name="Placeholder Project",
                 project_description="This is a test response",
@@ -34,16 +28,20 @@ class PropertyEstimateView(View):
                 raw_response={"mock": "test"}
             )
 
-            return JsonResponse({
-                "address": inquiry.address,
-                "lot_size_acres": str(inquiry.lot_size_acres),
-                "user_context": inquiry.user_context,
-                "project_name": estimate.project_name,
-                "project_description": estimate.project_description,
-                "estimated_net_cash_flow": str(estimate.estimated_net_cash_flow),
-                "estimated_revenue": str(estimate.estimated_revenue),
-                "estimated_cost": str(estimate.estimated_cost),
-            })
+            # 👇 Redirect straight to list page, not a dynamic route
+            return redirect("estimate_results_list")
 
         except Exception as e:
-            return JsonResponse({"error": str(e)}, status=400)
+            return render(request, "estimates/form.html", {"error": str(e)})
+
+def estimate_form(request):
+    return render(request, "estimates/form.html")
+
+def estimate_result(request, estimate_id):
+    estimate = get_object_or_404(PropertyEstimate, id=estimate_id)
+    return render(request, "estimates/result.html", {"estimate": estimate})
+
+def estimate_results_list(request):
+    estimates = PropertyEstimate.objects.all().order_by("-created_at")
+    return render(request, "estimates/results.html", {"estimates": estimates})
+
