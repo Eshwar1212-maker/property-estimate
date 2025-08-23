@@ -25,6 +25,8 @@ services:
       - ./server:/code
     ports:
       - "8000:8000"
+    env_file:
+      - ./server/.env        
     depends_on:
       db:
         condition: service_healthy

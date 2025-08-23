@@ -1,19 +1,21 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.sqlite3
+*.py[cod]
 
-# Virtual env
+# Virtual environments
 venv/
 
-# Django
+# Databases
+*.sqlite3
+*.db
+
+# Django / Logs
 *.log
 *.pot
-*.pyc
 *.mo
-*.db
+
+# Environment
+.env
 
 # Pytest
 .pytest_cache/
@@ -22,10 +24,10 @@ venv/
 postgres_data/
 *.pid
 
-# VSCode / IDE
+# IDEs / Editors
 .vscode/
 .idea/
 
-# Node / React (for later client folder)
+# Node / React (future client folder)
 node_modules/
 dist/
