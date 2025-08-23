@@ -8,32 +8,66 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='PropertyInquiry',
+            name="PropertyInquiry",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('address', models.CharField(max_length=255)),
-                ('lot_size_acres', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('user_context', models.TextField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("address", models.CharField(max_length=255)),
+                (
+                    "lot_size_acres",
+                    models.DecimalField(decimal_places=2, max_digits=10),
+                ),
+                ("user_context", models.TextField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
             ],
         ),
         migrations.CreateModel(
-            name='PropertyEstimate',
+            name="PropertyEstimate",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('project_name', models.CharField(max_length=255)),
-                ('project_description', models.TextField()),
-                ('estimated_net_cash_flow', models.DecimalField(decimal_places=2, max_digits=15)),
-                ('estimated_revenue', models.DecimalField(decimal_places=2, max_digits=15)),
-                ('estimated_cost', models.DecimalField(decimal_places=2, max_digits=15)),
-                ('raw_response', models.JSONField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('inquiry', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='estimates', to='estimates.propertyinquiry')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("project_name", models.CharField(max_length=255)),
+                ("project_description", models.TextField()),
+                (
+                    "estimated_net_cash_flow",
+                    models.DecimalField(decimal_places=2, max_digits=15),
+                ),
+                (
+                    "estimated_revenue",
+                    models.DecimalField(decimal_places=2, max_digits=15),
+                ),
+                (
+                    "estimated_cost",
+                    models.DecimalField(decimal_places=2, max_digits=15),
+                ),
+                ("raw_response", models.JSONField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "inquiry",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="estimates",
+                        to="estimates.propertyinquiry",
+                    ),
+                ),
             ],
         ),
     ]

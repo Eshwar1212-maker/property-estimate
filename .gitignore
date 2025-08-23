@@ -31,3 +31,5 @@ postgres_data/
 # Node / React (future client folder)
 node_modules/
 dist/
+__pycache__/
+postgres_data/

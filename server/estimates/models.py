@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class PropertyInquiry(models.Model):
     # User inputs
     address = models.CharField(max_length=255)
@@ -15,7 +16,9 @@ class PropertyInquiry(models.Model):
 
 class PropertyEstimate(models.Model):
     # Link back to the inquiry that triggered this estimate
-    inquiry = models.ForeignKey(PropertyInquiry, on_delete=models.CASCADE, related_name="estimates")
+    inquiry = models.ForeignKey(
+        PropertyInquiry, on_delete=models.CASCADE, related_name="estimates"
+    )
 
     # AI-generated fields
     project_name = models.CharField(max_length=255)
