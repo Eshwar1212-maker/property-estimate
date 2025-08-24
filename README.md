@@ -51,6 +51,8 @@ Here are some assumptions I made which explain the choices I used for certain te
 
 -For this project think I could've removed the server folder and just kept the project in end of itself. I'm realizing that it's because the HTML/CSS live inside of the Django app maybe the server folder can be misleading. 
 
+-Have their be better validation on the form. For example, ensure that maybe only correct real addresses that only exist are allowed to get submitted.
+
 -AI model accuracy. Right now since I'm on the free plan of open AI I didn't have an opportunity to test that many times to get an accurate/precise model. I think the estimations could be more accurate.
 
 Overall, I had a blast working on the project. I would love to talk further about potential improvements if you guys proceed with the next round!
