@@ -2,7 +2,6 @@
 import pytest
 from estimates.models import PropertyInquiry, PropertyEstimate
 
-
 @pytest.mark.django_db
 def test_property_inquiry_and_estimate_creation():
     inquiry = PropertyInquiry.objects.create(

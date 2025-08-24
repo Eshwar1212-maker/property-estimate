@@ -7,7 +7,7 @@ from estimates.models import PropertyInquiry, PropertyEstimate
 @pytest.mark.django_db
 def test_estimate_view_creates_inquiry_and_redirects(client, monkeypatch):
     async def fake_generate(*args, **kwargs):
-        from estimates.services import PropertyEstimateResponse
+        from estimates.services.property_estimate import PropertyEstimateResponse
 
         return PropertyEstimateResponse(
             project_name="Mocked",

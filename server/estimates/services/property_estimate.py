@@ -8,7 +8,6 @@ PROMPT_PATH = (
     Path(__file__).resolve().parent / "prompts" / "property_estimate_prompt.txt"
 )
 
-
 class PropertyEstimateResponse(BaseModel):
     project_name: str
     project_description: str

@@ -33,3 +33,4 @@ django-environ==0.12.0
 openai>=1.40.0
 black
 flake8
+pytest-django

@@ -1,21 +1,30 @@
-# estimates/tests/test_models.py
 import pytest
-from estimates.models import PropertyInquiry, PropertyEstimate
+import asyncio
+from estimates.services.property_estimate import generate_estimate, PropertyEstimateResponse
 
+def test_generate_estimate_returns_response(monkeypatch):
+    class FakeResponse:
+        output_text = """{
+            "project_name": "Mock",
+            "project_description": "Desc",
+            "estimated_net_cash_flow": 1,
+            "estimated_revenue": 2,
+            "estimated_cost": 1
+        }"""
 
-@pytest.mark.django_db
-def test_property_inquiry_and_estimate_creation():
-    inquiry = PropertyInquiry.objects.create(
-        address="123 Main St", lot_size_acres=1.5, user_context="Residential"
+    class FakeClient:
+        class responses:
+            @staticmethod
+            async def create(*args, **kwargs):
+                return FakeResponse()
+
+    monkeypatch.setattr(
+        "estimates.services.property_estimate.AsyncOpenAI",
+        lambda **kwargs: FakeClient()
     )
-    estimate = PropertyEstimate.objects.create(
-        inquiry=inquiry,
-        project_name="Test Project",
-        project_description="Simple test description",
-        estimated_net_cash_flow=1000,
-        estimated_revenue=2000,
-        estimated_cost=1000,
-        raw_response={"mock": "data"},
-    )
-    assert estimate.inquiry.address == "123 Main St"
-    assert estimate.estimated_net_cash_flow == 1000
+
+    result = asyncio.run(generate_estimate("addr", 1.0, "ctx"))
+
+    assert isinstance(result, PropertyEstimateResponse)
+    assert result.project_name == "Mock"
+    assert result.estimated_net_cash_flow == 1
