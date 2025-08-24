@@ -8,19 +8,20 @@ User can submit a form and have an AI assistant generate, cash flow, revenue, an
 
 Since this project runs in a docker container, the commands to run tests, install packages, and use the app will all need to be run in the container. 
 
-### 1 Clone the repository
+#### 1) Clone the repository
  
  Run ```git clone git@github.com:Eshwar1212-maker/property-estimate.git``` and cd into the right directory.
 
-### 2 Build and start the containers
+#### 2) Build and start the containers
  
+ Start by running the container with:
  ```docker compose up --build```
 
- Run migrations with:
+#### 3) Run migrations with:
 
 ```docker compose exec web python manage.py migrate```
 
- Create a superuser with:
+#### 4) Create a superuser with:
  
  ```docker compose exec web python manage.py createsuperuser```
 
@@ -36,11 +37,18 @@ Since this project runs in a docker container, the commands to run tests, instal
 
 ## Assumptions made
 
-Here are some assumptions I made which explain the choices I used for certain technologies or paradigms. 
+Here are some assumptions I made which explain the choices I used for certain technologies or paradigms: 
 
 -I used Django Templates for the front end. Since you guys said that right now you're only using Tailwind CSS with HTML. I thought that this would be the most simplest approach to build the template with the Django application instead of creating a separate folder just with HTML/CSS in them. 
 
 ## Potential Improvements with more time
 
 -Creating an 'apps' directory and putting estimates inside of that folder, instead of having the estimates folder be there by itself just for future scalability.
+
 -UIx, styling, and responsiveness. If i had more than the 4 hour mark. I would of made the website look a little more user friendly, and styled and similar to the Figma designs.
+
+-Since you guys said that right now you're using HTML and CSS I was thinking that further improvements would be separating the front end into a different folder, potentially using React if this project scales. 
+
+-AI model accuracy. Right now since I'm on the free plan of open AI I didn't have an opportunity to test that many times to get an accurate/precise model. I think the estimations could be more accurate.
+
+Overall, I had a blast working on the project. I would love to talk further about potential improvements if you guys proceed with the next round!
