@@ -35,6 +35,8 @@ Since this project runs in a docker container, the commands to run tests, instal
 
 ```docker compose exec web flake8 /code```  
 
+After this, you should see the form on localhost:8000, submit the form, and it will take you the the properties page!
+
 ## Assumptions made
 
 Here are some assumptions I made which explain the choices I used for certain technologies or paradigms: 
