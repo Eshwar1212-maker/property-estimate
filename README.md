@@ -74,10 +74,6 @@ Clear your browsers cache, and then run:
 ```bash
 docker compose down -v
 
-docker compose up --build
-
-docker compose exec web python manage.py migrate
-
 ```
 and then restart from step three.
 
