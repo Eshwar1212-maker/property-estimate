@@ -32,7 +32,9 @@ OPENAI_API_KEY=your-key-here
 #### 3) Build and start the containers
 
 Start by running the container with:
-`docker compose up --build`
+```bash
+docker compose up --build
+```
 
 #### 4) Run migrations with:
 
