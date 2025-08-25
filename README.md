@@ -36,7 +36,7 @@ Start by running the container with:
 docker compose up --build
 ```
 
-#### 4) Run migrations with:
+#### 4) Open a new terminal, and run the migrations with:
 
 ```bash
 docker compose exec web python manage.py migrate
@@ -54,7 +54,20 @@ docker compose exec web python manage.py createsuperuser
 docker compose exec web pytest
 ```
 
-(Optional) Commands to reset database and containers
+Also, I used black and flake8 for overall cleanliness and formatting. Run these commands to ensure code is formatted, has less style errors and bugs"
+
+```bash
+docker compose exec web black .
+docker compose exec web flake8 /code
+```
+
+After this, you should see the form on localhost:8000, submit the form, and it will take you the the properties page!
+
+## Common issues during development
+
+Bugs are very common during development for any application. A few common issues that are faced when I was reinstalling the application and cloning my repository had to do with migrations, volume conflicts CSRF token issues. If you run into any bugs, I would recommend following these next steps.
+
+Clear your browsers cache, and then run:
 
 ```bash
 docker compose down -v
@@ -64,15 +77,7 @@ docker compose up --build
 docker compose exec web python manage.py migrate
 
 ```
-
-Also, I used black and flake8 for overall cleanliness and formatting. Run these commands to ensure code is formatted, has less style errors and bugs"
-
-```bash
-docker compose exec web black .
-docker compose exec web flake8 /code
-```
-
-After this, you should see the form on localhost:8000, submit the form, and it will take you the the properties page!
+and then restart from step three.
 
 ## Assumptions made
 
