@@ -20,11 +20,11 @@ and cd into the right directory.
 
 ### 2) Get your ENV variables
 
-The only thing you will have to adjust is get your own API key from https://platform.openai.com/api-keys to use GPT's model.
+Create a .env file and put it in the server directory(env.example file is there as well). The only thing you will have to adjust is getting your own secret key, as well as your own API key from https://platform.openai.com/api-keys to use GPT's model.
 
 ```bash
 DEBUG=1
-SECRET_KEY=n3u4hx!5z%a3z3@7t*m1&6&m+2b@w67w
+SECRET_KEY=your-secrete-key-here
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
 OPENAI_API_KEY=your-key-here
 ```
@@ -41,6 +41,8 @@ docker compose up --build
 ```bash
 docker compose exec web python manage.py migrate
 ```
+
+Important: the above command will only work after the container is built!
 
 #### 5) Create a superuser with:
 
@@ -87,9 +89,9 @@ Here are some assumptions I made which explain the choices I used for certain te
 
 ## Potential Improvements with more time
 
--Creating an 'apps' directory and putting estimates inside of that folder, instead of having the estimates folder be there by itself just for future scalability.
+-UI/UX styling, and responsiveness. If i had more than the 4 hour mark, I would have made the website look a little more user friendly and styled and similar to the Figma designs.
 
--UI/UX styling, and responsiveness. If i had more than the 4 hour mark. I would have made the website look a little more user friendly, and styled and similar to the Figma designs.
+-Creating an 'apps' directory and putting estimates inside of that folder, instead of having the estimates folder be there by itself just for future scalability.
 
 -Since you guys said that right now you're using HTML and CSS I was thinking that further improvements would be separating the front end into a different folder, potentially using React if this project scales.
 
@@ -100,3 +102,6 @@ Here are some assumptions I made which explain the choices I used for certain te
 -AI model accuracy. Right now since I'm on the free plan of open AI I didn't have an opportunity to test that many times to get an accurate/precise model. I think the estimations could be more accurate.
 
 Overall, I had a blast working on the project. I would love to talk further about potential improvements if you guys proceed with the next round!
+
+![Form Screenshot](form.png)
+![Form Screenshot](properties.png)
