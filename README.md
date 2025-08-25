@@ -10,7 +10,13 @@ Since this project runs in a docker container, the commands to run tests, instal
 
 #### 1) Clone the repository
 
-Run `git clone git@github.com:Eshwar1212-maker/property-estimate.git` and cd into the right directory.
+Run
+
+```bash
+git clone git@github.com:Eshwar1212-maker/property-estimate.git
+```
+
+and cd into the right directory.
 
 ### 2) Get your ENV variables
 
