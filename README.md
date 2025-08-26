@@ -31,7 +31,7 @@ OPENAI_API_KEY=your-key-here
 
 #### 3) Build and start the containers
 
-Start by running the container with:
+Make sure you have docker compose open on your computer, and start by running the container with:
 ```bash
 docker compose up --build
 ```
@@ -63,7 +63,7 @@ docker compose exec web black .
 docker compose exec web flake8 /code
 ```
 
-After this, you should see the form on localhost:8000, submit the form, and it will take you the the properties page!
+After this, you should see the form on localhost:8000, submit the form, and it will take you the the properties page! If you get a token issue related to CSRF tokens then just clear your browser, cash, and then re-load the application.
 
 ## Common issues during development
 
